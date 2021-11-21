@@ -1,0 +1,39 @@
+version: "3.7"
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: ./docker/app/Dockerfile
+      args:
+        RUBY_VERSION: '3.0.2'
+        BUNDLER_VERSION: '2.2.15'
+    stdin_open: true
+    tty: true
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_HOST: postgres
+      DATABASE_USER: postgres
+      DATABASE_PASSWORD: postgres
+      DATABASE_PORT: 5432
+    volumes:
+      - ./api:/kitchenmate/api
+      - kitchenmate_gems:/usr/local/bundle
+    ports:
+      - "3001:3000"
+  postgres:
+    image: "postgres:14.1-alpine"
+    restart: always
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./api/postgres-data:/var/lib/postgresql/data/pgdata
+    ports:
+      - "5433:5432"
+
+volumes:
+  kitchenmate_gems:
+    external: true
