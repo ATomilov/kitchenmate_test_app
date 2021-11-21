@@ -8,4 +8,8 @@ class ApplicationController < ActionController::API
       render json: result.failure, status: status
     end
   end
+
+  rescue_from ActionController::ParameterMissing do |e|
+    render json: { message: "#{e.param.to_s.humanize} is missing" }, status: :unprocessable_entity
+  end
 end
