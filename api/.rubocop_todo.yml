@@ -146,3 +146,8 @@ Style/Documentation:
 
 Lint/UselessAccessModifier:
   Enabled: false
+
+Metrics/BlockLength:
+  Exclude:
+    - 'config/routes.rb'
+    - 'db/schema.rb'
