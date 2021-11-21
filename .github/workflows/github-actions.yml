@@ -10,11 +10,11 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Set up Ruby
-        working-directory: ./api
-        uses: ruby/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.0.2
           bundler-cache: true
+        working-directory: ./api
 
       - name: Install dependencies
         working-directory: ./api
