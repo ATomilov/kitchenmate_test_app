@@ -8,6 +8,7 @@ services:
       args:
         RUBY_VERSION: '3.0.2'
         BUNDLER_VERSION: '2.2.15'
+        APP_USER: dockeruser
     stdin_open: true
     tty: true
     depends_on:
@@ -18,7 +19,7 @@ services:
       DATABASE_PASSWORD: postgres
       DATABASE_PORT: 5432
     volumes:
-      - ./api:/kitchenmate/api
+      - ./api:/home/dockeruser/kitchenmate/api
       - kitchenmate_gems:/usr/local/bundle
     ports:
       - "3001:3000"

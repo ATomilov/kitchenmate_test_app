@@ -30,3 +30,7 @@ api/config/master.key
 
 # Ingore PSQL data
 api/postgres-data
+
+# Ignore .env files
+!api/.env.example
+api/.env.*.local
