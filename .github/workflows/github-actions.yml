@@ -17,7 +17,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: ./api
-        run:
+        run: |
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
 
