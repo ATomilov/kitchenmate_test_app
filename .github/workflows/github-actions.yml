@@ -8,11 +8,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-        working-directory: ./api
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
-        working-directory: ./api
         with:
           ruby-version: 3.0.2
           bundler-cache: true
