@@ -1,6 +1,6 @@
 module Crud
   module Users
-    class Create < ::Crud::Users::BaseCrud
+    class Create < ::Crud::BaseCrud
       option :params, proc(&:to_h)
       option :validation_contract, default: -> { ::ApiContracts::Users::CreateContract.new }
 
